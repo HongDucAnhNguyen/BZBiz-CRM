@@ -1,0 +1,26 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>BZBizCRM</title>
+    <link href="{% static 'css/styles.csss' %}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="max-w-7xl mx-auto">
+    {% include 'navbar.html' %}
+    {% block content %}
+    {% endblock content%}
+    {% include 'footer.html' %}
+</div>
+
+
+</body>
+</html>
