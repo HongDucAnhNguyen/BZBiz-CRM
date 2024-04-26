@@ -1,21 +1,25 @@
-from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse
-from .models import Lead, Agent, LeadStatus
+from django.shortcuts import reverse
+from .models import Lead, LeadStatus
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from .forms import LeadModelForm, CustomUserCreationForm, AssignAgentForm, LeadStatusUpdateForm
 from django.views.generic import (
     TemplateView, ListView, DetailView, UpdateView, DeleteView, CreateView, FormView)
 from django.core.mail import send_mail
-from agents.utils import OrganizerRoleCheckerAndLoginRequiredMixin
+from agents.utils import OrganizerRoleCheckerAndLoginRequiredMixin, RedirectIfAlreadyLoggedInMixin
 
 
-# view for registration
-class SignupView(CreateView):
+# views for auth
+class SignupView(RedirectIfAlreadyLoggedInMixin, CreateView):
     template_name = "registration/signup.html"
     form_class = CustomUserCreationForm
 
     def get_success_url(self):
         return reverse("login")
+
+
+class CustomLoginView(RedirectIfAlreadyLoggedInMixin, LoginView):
+    template_name = "registration/login.html"
 
 
 # view for site's landing page

@@ -1,7 +1,7 @@
 import secrets
 import string
 
-from django.contrib.auth.mixins import AccessMixin
+from django.contrib.auth.mixins import AccessMixin, LoginRequiredMixin
 from django.shortcuts import redirect
 
 
@@ -17,3 +17,10 @@ class CustomRawPasswordGenerator:
         alphabet = string.ascii_letters + string.digits
         password = ''.join(secrets.choice(alphabet) for i in range(8))
         return password
+
+
+class RedirectIfAlreadyLoggedInMixin(AccessMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("/")
+        return super().dispatch(request, *args, **kwargs)
