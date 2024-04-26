@@ -55,7 +55,7 @@ class AgentCreateView(OrganizerRoleCheckerAndLoginRequiredMixin, CreateView):
             subject="You are invited to be an agent",
             message=("Hello staff, you were added as an agent on the system. Please log in to start"
                      "working"),
-            from_email="admin@test.com",
+            from_email="bzbizcrm@mail.com",
             recipient_list=[user_account_for_agent_user.email]
         )
 
