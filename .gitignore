@@ -140,5 +140,3 @@ cython_debug/
 static_root
 .idea
 media_root
-node_modules
-*.exe
