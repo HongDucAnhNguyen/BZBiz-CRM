@@ -4,7 +4,8 @@
 {% block content %}
 
 
-<div class="max-w-lg mx-auto">
+<div class="max-w-lg mx-auto mt-20">
+    <h1 class="text-4xl mb-4 font-bold dark:text-white">SIGNUP</h1>
     <form method="post">
         {% csrf_token %}
         {{form | crispy}}
@@ -13,9 +14,11 @@
 
     </form>
     <br>
-    <div><a class=" text-red-600 hover:text-red-900 "
-            href="{% url 'reset-password' %}">Forgot
-        password?</a>
+    <div class="text-center "><a class=" text-red-600 hover:text-red-900 "
+                                 href="{% url 'reset-password' %}">Forgot
+        password?</a> <a class=" text-blue-600 hover:text-blue-700 ml-4 "
+                         href="{% url 'login' %}">Already have an account?
+    </a>
     </div>
 </div>
 {% endblock content%}

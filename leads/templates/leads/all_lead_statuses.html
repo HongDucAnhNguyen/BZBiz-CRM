@@ -3,8 +3,8 @@
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Statuses</h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Leads in different statuses</p>
+            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Leads Statuses</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Current statistics of your leads</p>
         </div>
         <div class="lg:w-2/3 w-full mx-auto overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="px-4 py-3 text-green-500">Open Lead</td>
+                    <td class="px-4 py-3 text-indigo-500">Open Leads</td>
 
                     <td class="px-4 py-3">{{ unassigned_leads_count }}</td>
 
@@ -31,10 +31,16 @@
                 {% for lead_status in lead_statuses %}
                 <tr>
 
-                    <td class="px-4 py-3">
-                        <a class="hover:text-blue-500" href="{% url 'leads:lead_status_detail' lead_status.pk %}">
+                    <td class="px-4 py-3 flex gap-5">
+                        <p>
                             {{ lead_status.name }}
-                        </a>
+                        </p>
+                        <button class="px-3 py-1 rounded-md bg-indigo-400 text-white">
+                            <a href="{% url 'leads:lead_status_detail' lead_status.pk %}">
+                                view details
+                            </a>
+                        </button>
+
                     </td>
 
                     <td class="px-4 py-3">TODO count</td>

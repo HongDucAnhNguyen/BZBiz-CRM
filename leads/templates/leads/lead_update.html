@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load tailwind_filters %}
+
 {% block content %}
 <section class="text-gray-600 body-font overflow-hidden">
     <div class="container px-5 py-24 mx-auto">
@@ -13,17 +15,14 @@
                     {{lead.last_name}}</h1>
                 <div class="flex mb-4">
 
+
                     <a href="{% url 'leads:lead_detail' lead.pk %}"
                        class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Description</a>
-
-
                     <a href="{% url 'leads:lead_update' lead.pk %}"
+                       class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Update
+                        details</a>
 
-                       class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1"
 
-                    >
-                        Update details
-                    </a>
                     <a href="{% url 'leads:lead_status_update' lead.pk %}"
                        class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
                         Update status
@@ -35,7 +34,7 @@
                     </h3>
                     <form method="POST">
                         {% csrf_token %}
-                        {{form.as_p}}
+                        {{form | crispy}}
                         <input class="mt-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                                type="submit">
                     </form>

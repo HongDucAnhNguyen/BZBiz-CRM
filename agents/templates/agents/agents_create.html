@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
-{% block content %}
-<h3>
-    Create a new Agent
-</h3>
+{% load tailwind_filters %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit">
-</form>
-<a href="{% url 'agents:all_agents' %}">
-    Go back to all Agents
-</a>
+{% block content %}
+<div class="max-w-lg mx-auto mt-20">
+    <h1 class="text-4xl mb-4 font-bold dark:text-white">CREATE AGENT</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="w-full bg-blue-500
+        hover:bg-blue-500 px-3 py-1 rounded-md text-white">Create agent
+        </button>
+    </form>
+</div>
+<div class="text-center mt-4">
+    <a class="text-blue-500" href="{% url 'agents:all_agents' %}">
+        Go back to all Agents
+    </a>
+</div>
+
 {% endblock content%}
 
 

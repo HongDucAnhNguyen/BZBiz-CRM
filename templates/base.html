@@ -15,12 +15,24 @@
 </head>
 <body>
 
-<div class="max-w-7xl mx-auto">
+<div class=" bg-red-50">
+    <div class="max-w-7xl mx-auto">
+
     {% include 'navbar.html' %}
+    </div>
+
+</div>
+
+
     {% block content %}
     {% endblock content%}
-    {% include 'footer.html' %}
+
 </div>
+
+{% include 'footer.html' %}
+
+
+
 
 
 </body>

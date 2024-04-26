@@ -1,11 +1,16 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import reverse
 from django.views.generic import (
     TemplateView, ListView, DetailView, UpdateView, DeleteView, CreateView)
-from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AgentModelForm
 from leads.models import Agent
 from .utils import OrganizerRoleCheckerAndLoginRequiredMixin, CustomRawPasswordGenerator
 from django.core.mail import send_mail
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 
 class AllAgentsView(OrganizerRoleCheckerAndLoginRequiredMixin, ListView):
@@ -55,7 +60,7 @@ class AgentCreateView(OrganizerRoleCheckerAndLoginRequiredMixin, CreateView):
             subject="You are invited to be an agent",
             message=("Hello staff, you were added as an agent on the system. Please log in to start"
                      "working"),
-            from_email="bzbizcrm@mail.com",
+            from_email=env("DEFAULT_FROM_EMAIL"),
             recipient_list=[user_account_for_agent_user.email]
         )
 
