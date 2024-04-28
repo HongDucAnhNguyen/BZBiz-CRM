@@ -5,18 +5,23 @@
 
 {% block content %}
 
-<h3>
-    Update a new Agent
-</h3>
+<div class="max-w-lg mx-auto mt-20 mb-20">
+    <h1 class="text-4xl mb-4 font-bold dark:text-white">UPDATE AGENT</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    {{form | crispy}}
-    <input type="submit">
-</form>
-<a href="{% url 'agents:all_agents' %}">
-    Go back to all Agents
-</a>
+    <form method="POST">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-500 px-3 py-1
+       rounded-md text-white">Update
+        </button>
+    </form>
+    <div class="text-center mt-4">
+        <a class="text-blue-500" href="{% url 'agents:agent_detail' agent.pk %}">
+            Go back to Details
+        </a>
+    </div>
+</div>
+
 {% endblock content%}
 
 

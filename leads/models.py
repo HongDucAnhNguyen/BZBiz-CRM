@@ -26,6 +26,10 @@ class Lead(models.Model):
     agent = models.ForeignKey("Agent", on_delete=models.SET_NULL, null=True, blank=True)
     lead_status = models.ForeignKey("LeadStatus", related_name="leads", on_delete=models.SET_NULL, null=True,
                                     blank=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
 
     def __str__(self):
         return self.first_name

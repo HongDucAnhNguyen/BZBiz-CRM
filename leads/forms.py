@@ -6,23 +6,6 @@ from django.contrib.auth.forms import UserCreationForm, UsernameField
 CustomUser = get_user_model()
 
 
-class LeadModelForm(forms.ModelForm):
-    class Meta:
-        model = Lead
-        fields = (
-            'first_name',
-            'last_name',
-            'age',
-            'agent',
-        )
-
-
-class LeadForm(forms.Form):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    age = forms.IntegerField(min_value=0)
-
-
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         # override default User to CustomUser
@@ -32,6 +15,27 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
         field_classes = {'username': UsernameField}
+
+
+class LeadModelForm(forms.ModelForm):
+    class Meta:
+        model = Lead
+        fields = (
+            'first_name',
+            'last_name',
+            'age',
+            'agent',
+            'description',
+            'phone',
+            'email',
+
+        )
+
+
+# class LeadForm(forms.Form):
+#     first_name = forms.CharField()
+#     last_name = forms.CharField()
+#     age = forms.IntegerField(min_value=0)
 
 
 class AssignAgentForm(forms.Form):

@@ -4,10 +4,10 @@
 {% block content %}
 <section class="text-gray-600 body-font overflow-hidden">
     <div class="container px-5 py-24 mx-auto">
-        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-4/5 mx-auto flex justify-center">
             <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
                 <a href="{% url 'leads:all_leads' %}"
-                   class="flex mb-3  text-lg">
+                   class="flex mb-3 underline text-indigo-500  text-lg">
                     Go back to all leads
                 </a>
                 <h2 class="text-sm title-font text-gray-500 tracking-widest">Lead</h2>
@@ -36,32 +36,39 @@
                         {% csrf_token %}
                         {{form | crispy}}
                         <input class="mt-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                               type="submit">
+                               type="submit" value="Update Lead">
                     </form>
                 </div>
                 <div class="flex border-t border-gray-200 py-2">
                     <span class="text-gray-500">Age</span>
                     <span class="ml-auto text-gray-900">{{lead.age}}</span>
                 </div>
+
                 <div class="flex border-t border-gray-200 py-2">
-                    <span class="text-gray-500">Location</span>
-                    <span class="ml-auto text-gray-900">Medium</span>
+                    <span class="text-gray-500">Phone</span>
+                    <span class="ml-auto text-gray-900">{{lead.phone}}</span>
                 </div>
-                <!--                <div class="flex border-t border-b mb-6 border-gray-200 py-2">-->
-                <!--                    <span class="text-gray-500">Phone</span>-->
-                <!--                    <span class="ml-auto text-gray-900">41242342343</span>-->
-                <!--                </div>-->
+                <div class="flex border-t border-gray-200 py-2">
+                    <span class="text-gray-500">Email</span>
+                    <span class="ml-auto text-gray-900">{{lead.email}}</span>
+                </div>
+                <div class="flex border-t border-gray-200 py-2">
+                    <span class="text-gray-500">Status</span>
+
+                    <span class="ml-auto text-gray-900">{{lead.lead_status}}</span>
+                </div>
                 <div class="flex border-t border-b mb-6 border-gray-200 py-2">
                     <span class="text-gray-500"> Assigned agent</span>
                     <span class="ml-auto text-gray-900">{{lead.agent}}</span>
                 </div>
+
 
                 <div class="flex">
                     <!--                    <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>-->
                     <button class="flex items-center justify-center  w-full ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                         <a href="{% url 'leads:lead_delete' lead.pk %}"
                         >
-                            Delete lead
+                            I want to delete lead
                         </a>
                     </button>
                     <!--                    <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">-->
@@ -72,8 +79,7 @@
                     <!--                    </button>-->
                 </div>
             </div>
-            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                 src="https://dummyimage.com/400x400">
+
         </div>
     </div>
 </section>

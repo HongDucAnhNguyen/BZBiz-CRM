@@ -18,7 +18,7 @@ from django.contrib.auth.views import (LogoutView, LoginView,
                                        PasswordResetView, PasswordResetDoneView,
                                        PasswordResetConfirmView, PasswordResetCompleteView)
 from django.urls import path, include
-from leads.views import HomePageView, SignupView, CustomLoginView
+from leads.views import HomePageView, SignupView, CustomLoginView, GetStartedView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,6 +26,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view()),
+    path('get-started/', GetStartedView.as_view()),
     path('leads/', include("leads.urls", namespace="leads")),
     path('agents/', include("agents.urls", namespace="agents")),
     path('login/', CustomLoginView.as_view(), name="login"),

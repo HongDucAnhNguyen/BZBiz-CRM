@@ -73,17 +73,26 @@ class AgentCreateView(OrganizerRoleCheckerAndLoginRequiredMixin, CreateView):
 
 class AgentUpdateView(OrganizerRoleCheckerAndLoginRequiredMixin, UpdateView):
     template_name = "agents/agent_update.html"
-
-    def get_queryset(self):
-        individual_org = self.request.user.userprofile
-        return Agent.objects.filter(organisation=individual_org)
-
     form_class = AgentModelForm
 
     def get_success_url(self):
         pk = self.kwargs['pk']
 
         return reverse("agents:agent_detail", kwargs={'pk': pk})
+
+    def get_queryset(self):
+        individual_org = self.request.user.userprofile
+        return Agent.objects.filter(organisation=individual_org)
+
+    def get_form_kwargs(self, **kwargs):
+        kwargs = super().get_form_kwargs(**kwargs)
+        kwargs['instance'] = kwargs['instance'].user
+        return kwargs
+
+    def form_valid(self, form):
+        # Save the form data
+        form.save()
+        return super(AgentUpdateView, self).form_valid(form)
 
 
 class AgentDeleteView(OrganizerRoleCheckerAndLoginRequiredMixin, DeleteView):

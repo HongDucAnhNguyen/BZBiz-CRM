@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from agents.utils import OrganizerRoleCheckerAndLoginRequiredMixin, RedirectIfAlreadyLoggedInMixin
 
 
-# views for auth
+# ============================PROTECTED ROUTES=====================================#
 class SignupView(RedirectIfAlreadyLoggedInMixin, CreateView):
     template_name = "registration/signup.html"
     form_class = CustomUserCreationForm
@@ -27,7 +27,8 @@ class HomePageView(TemplateView):
     template_name = "homepage.html"
 
 
-# ============================PROTECTED ROUTES=====================================#
+class GetStartedView(TemplateView):
+    template_name = "learn_to_use.html"
 
 
 # ================LEAD RELATED==================================#
@@ -91,6 +92,10 @@ class LeadCreateView(OrganizerRoleCheckerAndLoginRequiredMixin, CreateView):
         return reverse("leads:all_leads")
 
     def form_valid(self, form):
+        newLead = form.save(commit=False)
+        newLead.organisation = self.request.user.userprofile
+        newLead.save()
+
         # send an email before returning back to whatever form_valid is doing
         send_mail(
 

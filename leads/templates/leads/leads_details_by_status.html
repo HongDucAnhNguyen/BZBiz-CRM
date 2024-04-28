@@ -6,10 +6,10 @@
             <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
                 {{lead_status.name}}
             </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Leads under this status type</p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Leads that are {{lead_status.name}}</p>
         </div>
         <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
+            <table class="table-auto w-full text-left whitespace-no-wrap bg-gray-50">
                 <thead>
                 <tr>
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
@@ -18,6 +18,16 @@
                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                         Last Name
                     </th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                        Phone
+                    </th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                        Email
+                    </th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                        Age
+                    </th>
+
 
                 </tr>
                 </thead>
@@ -27,11 +37,13 @@
                 <tr>
 
                     <td class="px-4 py-3">
-                        <a class="hover:text-blue-500" href="{% url 'leads:lead_detail' lead.pk %}">
-                            {{ lead.first_name }}
-                        </a>
+                        {{ lead.first_name }}
+
                     </td>
                     <td class="px-4 py-3">{{ lead.last_name }}</td>
+                    <td class="px-4 py-3">{{ lead.phone }}</td>
+                    <td class="px-4 py-3">{{ lead.email }}</td>
+                    <td class="px-4 py-3">{{ lead.age }}</td>
                 </tr>
                 {% endfor %}
                 </tbody>
