@@ -13,7 +13,7 @@
 
     <title>BZBizCRM</title>
 </head>
-<body>
+<body >
 
 <div class=" bg-red-50">
     <div class="max-w-7xl mx-auto">
@@ -21,11 +21,11 @@
     {% include 'navbar.html' %}
     </div>
 
-</div>
+</div >
 
+<div class="p-5"> {% block content %}
+    {% endblock content%}</div>
 
-    {% block content %}
-    {% endblock content%}
 
 </div>
 
