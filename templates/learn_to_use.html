@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-wrap">
@@ -17,8 +17,8 @@
                     </div>
                     <div class="flex-grow pl-4">
                         <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
-                        <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-                            bespoke try-hard cliche palo santo offal.</p>
+                        <p class="leading-relaxed">Register an account on Delftrome Clothing Store CRM. Once registered,
+                            you will automatically be assigned as an organizer.</p>
                     </div>
                 </div>
                 <div class="flex relative pb-12">
@@ -33,8 +33,8 @@
                     </div>
                     <div class="flex-grow pl-4">
                         <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
-                        <p class="leading-relaxed">Vice migas literally kitsch +1 pok pok. Truffaut hot chicken
-                            slow-carb health goth, vape typewriter.</p>
+                        <p class="leading-relaxed">Log in to your account and navigate to the Leads section to start
+                            creating new leads for your workspace.</p>
                     </div>
                 </div>
                 <div class="flex relative pb-12">
@@ -50,8 +50,8 @@
                     </div>
                     <div class="flex-grow pl-4">
                         <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 3</h2>
-                        <p class="leading-relaxed">Coloring book nar whal glossier master cleanse umami. Salvia +1
-                            master cleanse blog taiyaki.</p>
+                        <p class="leading-relaxed">View, edit, or delete leads within your workspace. Ensure that all
+                            leads are up-to-date and accurately reflect potential clients.</p>
                     </div>
                 </div>
                 <div class="flex relative pb-12">
@@ -67,8 +67,8 @@
                     </div>
                     <div class="flex-grow pl-4">
                         <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 4</h2>
-                        <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-                            bespoke try-hard cliche palo santo offal.</p>
+                        <p class="leading-relaxed">Create agent accounts for your team members. They will receive an
+                            invitation email to log in as agents.</p>
                     </div>
                 </div>
                 <div class="flex relative">
@@ -81,13 +81,13 @@
                     </div>
                     <div class="flex-grow pl-4">
                         <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
-                        <p class="leading-relaxed">Pitchfork ugh tattooed scenester echo park gastropub whatever
-                            cold-pressed retro.</p>
+                        <p class="leading-relaxed">Assign leads to agents and track their progress as they update the
+                            status of the leads they are handling.</p>
                     </div>
                 </div>
             </div>
             <img class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12"
-                 src="https://dummyimage.com/1200x500" alt="step">
+                 src="{% static 'images/learn-to-use.png' %}" alt="steps">
         </div>
     </div>
 </section>

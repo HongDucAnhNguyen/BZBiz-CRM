@@ -8,7 +8,7 @@
 
 #### Live site: https://bzbiz-crm.com/
 
-![img_1.png](img_1.png)
+![img_1.png](static/images/img_1.png)
 
 ### Features
 

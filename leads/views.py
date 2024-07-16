@@ -105,6 +105,7 @@ class LeadCreateView(OrganizerRoleCheckerAndLoginRequiredMixin, CreateView):
             recipient_list=["sometest@test.com"]
 
         )
+        
         return super(LeadCreateView, self).form_valid(form)
 
 

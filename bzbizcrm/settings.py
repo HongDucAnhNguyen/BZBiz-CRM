@@ -73,6 +73,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / "templates"],
+        # tells Django to look in each app for templates folder
+
+        # Django will search for templates in the directories listed in DIRS first,
+        # and then in the templates directories of each installed app,
+        # in the order that they are listed in INSTALLED_APPS.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,6 +99,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env("DB_NAME"),
+
         'USER': env("DB_USER"),
         'PASSWORD': env("DB_PASSWORD"),
         'HOST': env("DB_HOST"),
@@ -136,9 +142,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Where django should collect static files during development
+
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+# Where django should collect static files for deployment
 STATIC_ROOT = "static_root"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
